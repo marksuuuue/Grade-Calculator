@@ -2,50 +2,11 @@
 <html>
 <head>
     <title>Grade Calculator</title>
-    <style>
-        body {
-            font-family: Arial;
-            margin: 20px;
-        }
-        .container {
-            width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #000;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 0;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="number"] {
-            width: 100%;
-            padding: 5px;
-            box-sizing: border-box;
-        }
-        button {
-            width: 100%;
-            padding: 8px;
-            background: #ddd;
-            border: 1px solid #000;
-            cursor: pointer;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #000;
-        }
-        .error {
-            color: red;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">      
+<?php
+    // sa ginawa kong style sir para lang maging maging malinis and maayos yung grade calculator and magandang tignan // 
+?>
+
 </head>
 <body>
     <div class="container">
@@ -54,22 +15,26 @@
         
         <form method="POST">
             <div class="form-group">
-                <label for="quiz">Quiz Score (0-100):</label>
+                <label for="quiz">Quiz Score  (0-100):</label>
                 <input type="number" id="quiz" name="quiz" min="0" max="100" step="0.01" required 
                        value="<?php echo isset($_POST['quiz']) ? $_POST['quiz'] : ''; ?>">
             </div>
             
             <div class="form-group">
-                <label for="assignment">Assignment Score (0-100):</label>
+                <label for="assignment">Assignment Score  (0-100):</label>
                 <input type="number" id="assignment" name="assignment" min="0" max="100" step="0.01" required 
                        value="<?php echo isset($_POST['assignment']) ? $_POST['assignment'] : ''; ?>">
             </div>
             
             <div class="form-group">
-                <label for="exam">Exam Score (0-100):</label>
+                <label for="exam">Exam Score  (0-100):</label>
                 <input type="number" id="exam" name="exam" min="0" max="100" step="0.01" required 
                        value="<?php echo isset($_POST['exam']) ? $_POST['exam'] : ''; ?>">
             </div>
+</body>
+<?php
+    // dito naman sir miniminize ko lang yung mga boarder ng quiz, assignment, and exam // 
+?>            
             
             <button type="submit" name="calculate">Calculate Grade</button>
         </form>
@@ -100,15 +65,15 @@
                 $weighted_average = ($quiz * $quiz_weight) + ($assignment * $assignment_weight) + ($exam * $exam_weight);
                 
                 if ($weighted_average >= 90) {
-                    $letter_grade = "A";
+                    $letter_grade = "A 'Excellent'";
                 } elseif ($weighted_average >= 80) {
-                    $letter_grade = "B";
+                    $letter_grade = "B 'Awesome'";
                 } elseif ($weighted_average >= 70) {
-                    $letter_grade = "C";
+                    $letter_grade = "C 'Very Good'";
                 } elseif ($weighted_average >= 60) {
-                    $letter_grade = "D";
+                    $letter_grade = "D 'Good'";
                 } else {
-                    $letter_grade = "F";
+                    $letter_grade = "F 'Failed'";
                 }
                 
                 echo "<div class='result'>";
@@ -122,5 +87,8 @@
         }
         ?>
     </div>
+<?php
+    // dito naman po sir nag input lang ako ng mga result A-F para malalaman kung gaano kataas&&kaliit yung result // 
+?>    
 </body>
 </html>
